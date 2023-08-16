@@ -114,7 +114,10 @@
 
             for(let index=1; index<n; index++) {
                 let loc = index - 1;
-                background_change(bars[loc],'red');
+                if (loc>0){
+                    background_change(bars[loc-1],'lightgreen');
+                }
+                background_change(bars[loc],'darkblue');
 
                 var key = parseInt(bars[loc].innerText);
                 console.log('select: '+ key);
@@ -129,15 +132,12 @@
                 let new_item = bars[index];
                 while (loc >= 0 && parseInt(new_item.innerText) < key ) {
 
-                    background_change(bars[loc],'red');
-                    await new Promise((resolve)=> {
-                        setTimeout(() => {
-                            resolve();
-                        }, 300);
-                    })
+                    swap(bars[loc],bars[loc+1]);
+                    background_change(bars[loc+1],'darkblue');
                     background_change(bars[loc],'lightgreen');
+
                     bars[loc+1] = bars[loc];
-                    copy(bars[loc+1],bars[loc]);
+
                     await new Promise((resolve)=> {
                         setTimeout(() => {
                             resolve();
@@ -147,15 +147,12 @@
                     i_compare.innerText = i_compare_cnt+1;
                     loc--;
                 }
+
                 bars[loc+1] = new_item;
-                copy(bars[loc+1],new_item);
 
                 {#var i_swap_cnt = parseInt(i_swap.innerText);#}
                 {#i_swap.innerText = i_swap_cnt+1;#}
-
             }
-
-
         }
 
 

@@ -87,4 +87,4 @@ __4. 로컬 서버 접속__
 
 ## License
 
-[MIT License](
+[MIT License]()

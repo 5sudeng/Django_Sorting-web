@@ -1,11 +1,3 @@
-# V_sualization
-
-
-
-솦토링
-
-Team 10: 김세란, 오수정
-
 
 ## Brief Overview
 
